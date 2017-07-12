@@ -3,38 +3,38 @@ var initGulpTasks = require('react-component-gulp-tasks');
 
 var taskConfig = {
 
-	component: {
-		name: 'index',
-		dependencies: [
-			'classnames',
-			'react-input-autosize',
-			'react',
-			'react-dom',
-			'create-react-class',
-			'prop-types'
-		],
-		less: {
-			path: 'less',
-			entry: 'default.less'
-		}
-	},
+  component: {
+    name: 'index',
+    dependencies: [
+      'classnames',
+      'react-input-autosize',
+      'react',
+      'react-dom',
+      'create-react-class',
+      'prop-types'
+    ],
+    less: {
+      path: 'less',
+      entry: 'default.less'
+    }
+  },
 
-	example: {
-		src: 'examples/src',
-		dist: 'examples/dist',
-		standalone: true,
-		files: [
-			'index.html',
-			'standalone.html',
-			'.gitignore'
-		],
-		scripts: [
-			'app.js'
-		],
-		less: [
-			'example.less'
-		]
-	}
+  example: {
+    src: 'examples/src',
+    dist: 'examples/dist',
+    standalone: true,
+    files: [
+      'index.html',
+      'standalone.html',
+      '.gitignore'
+    ],
+    scripts: [
+      'app.js'
+    ],
+    less: [
+      'example.less'
+    ]
+  }
 
 };
 

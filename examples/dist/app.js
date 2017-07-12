@@ -58,21 +58,21 @@ var _componentsStates = require('./components/States');
 var _componentsStates2 = _interopRequireDefault(_componentsStates);
 
 _reactDom2['default'].render(_react2['default'].createElement(
-	'div',
-	null,
-	_react2['default'].createElement(_componentsStates2['default'], { label: 'States', searchable: true }),
-	_react2['default'].createElement(_componentsMultiselect2['default'], { label: 'Multiselect' }),
-	_react2['default'].createElement(_componentsVirtualized2['default'], { label: 'Virtualized' }),
-	_react2['default'].createElement(_componentsContributors2['default'], { label: 'Contributors (Async)' }),
-	_react2['default'].createElement(_componentsGithubUsers2['default'], { label: 'Github users (Async with fetch.js)' }),
-	_react2['default'].createElement(_componentsNumericSelect2['default'], { label: 'Numeric Values' }),
-	_react2['default'].createElement(_componentsBooleanSelect2['default'], { label: 'Boolean Values' }),
-	_react2['default'].createElement(_componentsCustomRender2['default'], { label: 'Custom Render Methods' }),
-	_react2['default'].createElement(_componentsCustomComponents2['default'], { label: 'Custom Placeholder, Option, Value, and Arrow Components' }),
-	_react2['default'].createElement(_componentsCreatable2['default'], {
-		hint: 'Enter a value that\'s NOT in the list, then hit return',
-		label: 'Custom tag creation'
-	})
+  'div',
+  null,
+  _react2['default'].createElement(_componentsStates2['default'], { label: 'States', searchable: true }),
+  _react2['default'].createElement(_componentsMultiselect2['default'], { label: 'Multiselect' }),
+  _react2['default'].createElement(_componentsVirtualized2['default'], { label: 'Virtualized' }),
+  _react2['default'].createElement(_componentsContributors2['default'], { label: 'Contributors (Async)' }),
+  _react2['default'].createElement(_componentsGithubUsers2['default'], { label: 'Github users (Async with fetch.js)' }),
+  _react2['default'].createElement(_componentsNumericSelect2['default'], { label: 'Numeric Values' }),
+  _react2['default'].createElement(_componentsBooleanSelect2['default'], { label: 'Boolean Values' }),
+  _react2['default'].createElement(_componentsCustomRender2['default'], { label: 'Custom Render Methods' }),
+  _react2['default'].createElement(_componentsCustomComponents2['default'], { label: 'Custom Placeholder, Option, Value, and Arrow Components' }),
+  _react2['default'].createElement(_componentsCreatable2['default'], {
+    hint: 'Enter a value that\'s NOT in the list, then hit return',
+    label: 'Custom tag creation'
+  })
 ), document.getElementById('example'));
 
 },{"./components/BooleanSelect":2,"./components/Contributors":3,"./components/Creatable":4,"./components/CustomComponents":5,"./components/CustomRender":6,"./components/GithubUsers":7,"./components/Multiselect":8,"./components/NumericSelect":9,"./components/States":10,"./components/Virtualized":11,"react":undefined,"react-dom":undefined,"react-select":undefined}],2:[function(require,module,exports){
@@ -163,90 +163,90 @@ var MAX_CONTRIBUTORS = 6;
 var ASYNC_DELAY = 500;
 
 var Contributors = (0, _createReactClass2['default'])({
-	displayName: 'Contributors',
-	propTypes: {
-		label: _propTypes2['default'].string
-	},
-	getInitialState: function getInitialState() {
-		return {
-			multi: true,
-			value: [CONTRIBUTORS[0]]
-		};
-	},
-	onChange: function onChange(value) {
-		this.setState({
-			value: value
-		});
-	},
-	switchToMulti: function switchToMulti() {
-		this.setState({
-			multi: true,
-			value: [this.state.value]
-		});
-	},
-	switchToSingle: function switchToSingle() {
-		this.setState({
-			multi: false,
-			value: this.state.value[0]
-		});
-	},
-	getContributors: function getContributors(input, callback) {
-		input = input.toLowerCase();
-		var options = CONTRIBUTORS.filter(function (i) {
-			return i.github.substr(0, input.length) === input;
-		});
-		var data = {
-			options: options.slice(0, MAX_CONTRIBUTORS),
-			complete: options.length <= MAX_CONTRIBUTORS
-		};
-		setTimeout(function () {
-			callback(null, data);
-		}, ASYNC_DELAY);
-	},
-	gotoContributor: function gotoContributor(value, event) {
-		window.open('https://github.com/' + value.github);
-	},
-	render: function render() {
-		return _react2['default'].createElement(
-			'div',
-			{ className: 'section' },
-			_react2['default'].createElement(
-				'h3',
-				{ className: 'section-heading' },
-				this.props.label
-			),
-			_react2['default'].createElement(_reactSelect2['default'].Async, { multi: this.state.multi, value: this.state.value, onChange: this.onChange, onValueClick: this.gotoContributor, valueKey: 'github', labelKey: 'name', loadOptions: this.getContributors }),
-			_react2['default'].createElement(
-				'div',
-				{ className: 'checkbox-list' },
-				_react2['default'].createElement(
-					'label',
-					{ className: 'checkbox' },
-					_react2['default'].createElement('input', { type: 'radio', className: 'checkbox-control', checked: this.state.multi, onChange: this.switchToMulti }),
-					_react2['default'].createElement(
-						'span',
-						{ className: 'checkbox-label' },
-						'Multiselect'
-					)
-				),
-				_react2['default'].createElement(
-					'label',
-					{ className: 'checkbox' },
-					_react2['default'].createElement('input', { type: 'radio', className: 'checkbox-control', checked: !this.state.multi, onChange: this.switchToSingle }),
-					_react2['default'].createElement(
-						'span',
-						{ className: 'checkbox-label' },
-						'Single Value'
-					)
-				)
-			),
-			_react2['default'].createElement(
-				'div',
-				{ className: 'hint' },
-				'This example implements custom label and value properties, async options and opens the github profiles in a new window when values are clicked'
-			)
-		);
-	}
+  displayName: 'Contributors',
+  propTypes: {
+    label: _propTypes2['default'].string
+  },
+  getInitialState: function getInitialState() {
+    return {
+      multi: true,
+      value: [CONTRIBUTORS[0]]
+    };
+  },
+  onChange: function onChange(value) {
+    this.setState({
+      value: value
+    });
+  },
+  switchToMulti: function switchToMulti() {
+    this.setState({
+      multi: true,
+      value: [this.state.value]
+    });
+  },
+  switchToSingle: function switchToSingle() {
+    this.setState({
+      multi: false,
+      value: this.state.value[0]
+    });
+  },
+  getContributors: function getContributors(input, callback) {
+    input = input.toLowerCase();
+    var options = CONTRIBUTORS.filter(function (i) {
+      return i.github.substr(0, input.length) === input;
+    });
+    var data = {
+      options: options.slice(0, MAX_CONTRIBUTORS),
+      complete: options.length <= MAX_CONTRIBUTORS
+    };
+    setTimeout(function () {
+      callback(null, data);
+    }, ASYNC_DELAY);
+  },
+  gotoContributor: function gotoContributor(value, event) {
+    window.open('https://github.com/' + value.github);
+  },
+  render: function render() {
+    return _react2['default'].createElement(
+      'div',
+      { className: 'section' },
+      _react2['default'].createElement(
+        'h3',
+        { className: 'section-heading' },
+        this.props.label
+      ),
+      _react2['default'].createElement(_reactSelect2['default'].Async, { multi: this.state.multi, value: this.state.value, onChange: this.onChange, onValueClick: this.gotoContributor, valueKey: 'github', labelKey: 'name', loadOptions: this.getContributors }),
+      _react2['default'].createElement(
+        'div',
+        { className: 'checkbox-list' },
+        _react2['default'].createElement(
+          'label',
+          { className: 'checkbox' },
+          _react2['default'].createElement('input', { type: 'radio', className: 'checkbox-control', checked: this.state.multi, onChange: this.switchToMulti }),
+          _react2['default'].createElement(
+            'span',
+            { className: 'checkbox-label' },
+            'Multiselect'
+          )
+        ),
+        _react2['default'].createElement(
+          'label',
+          { className: 'checkbox' },
+          _react2['default'].createElement('input', { type: 'radio', className: 'checkbox-control', checked: !this.state.multi, onChange: this.switchToSingle }),
+          _react2['default'].createElement(
+            'span',
+            { className: 'checkbox-label' },
+            'Single Value'
+          )
+        )
+      ),
+      _react2['default'].createElement(
+        'div',
+        { className: 'hint' },
+        'This example implements custom label and value properties, async options and opens the github profiles in a new window when values are clicked'
+      )
+    );
+  }
 });
 
 module.exports = Contributors;
@@ -639,124 +639,124 @@ var _isomorphicFetch = require('isomorphic-fetch');
 var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
 
 var GithubUsers = (0, _createReactClass2['default'])({
-	displayName: 'GithubUsers',
-	propTypes: {
-		label: _propTypes2['default'].string
-	},
-	getInitialState: function getInitialState() {
-		return {
-			backspaceRemoves: true,
-			multi: true
-		};
-	},
-	onChange: function onChange(value) {
-		this.setState({
-			value: value
-		});
-	},
-	switchToMulti: function switchToMulti() {
-		this.setState({
-			multi: true,
-			value: [this.state.value]
-		});
-	},
-	switchToSingle: function switchToSingle() {
-		this.setState({
-			multi: false,
-			value: this.state.value ? this.state.value[0] : null
-		});
-	},
-	getUsers: function getUsers(input) {
-		if (!input) {
-			return Promise.resolve({ options: [] });
-		}
+  displayName: 'GithubUsers',
+  propTypes: {
+    label: _propTypes2['default'].string
+  },
+  getInitialState: function getInitialState() {
+    return {
+      backspaceRemoves: true,
+      multi: true
+    };
+  },
+  onChange: function onChange(value) {
+    this.setState({
+      value: value
+    });
+  },
+  switchToMulti: function switchToMulti() {
+    this.setState({
+      multi: true,
+      value: [this.state.value]
+    });
+  },
+  switchToSingle: function switchToSingle() {
+    this.setState({
+      multi: false,
+      value: this.state.value ? this.state.value[0] : null
+    });
+  },
+  getUsers: function getUsers(input) {
+    if (!input) {
+      return Promise.resolve({ options: [] });
+    }
 
-		return (0, _isomorphicFetch2['default'])('https://api.github.com/search/users?q=' + input).then(function (response) {
-			return response.json();
-		}).then(function (json) {
-			return { options: json.items };
-		});
-	},
-	gotoUser: function gotoUser(value, event) {
-		window.open(value.html_url);
-	},
-	toggleBackspaceRemoves: function toggleBackspaceRemoves() {
-		this.setState({
-			backspaceRemoves: !this.state.backspaceRemoves
-		});
-	},
-	toggleCreatable: function toggleCreatable() {
-		this.setState({
-			creatable: !this.state.creatable
-		});
-	},
-	render: function render() {
-		var AsyncComponent = this.state.creatable ? _reactSelect2['default'].AsyncCreatable : _reactSelect2['default'].Async;
+    return (0, _isomorphicFetch2['default'])('https://api.github.com/search/users?q=' + input).then(function (response) {
+      return response.json();
+    }).then(function (json) {
+      return { options: json.items };
+    });
+  },
+  gotoUser: function gotoUser(value, event) {
+    window.open(value.html_url);
+  },
+  toggleBackspaceRemoves: function toggleBackspaceRemoves() {
+    this.setState({
+      backspaceRemoves: !this.state.backspaceRemoves
+    });
+  },
+  toggleCreatable: function toggleCreatable() {
+    this.setState({
+      creatable: !this.state.creatable
+    });
+  },
+  render: function render() {
+    var AsyncComponent = this.state.creatable ? _reactSelect2['default'].AsyncCreatable : _reactSelect2['default'].Async;
 
-		return _react2['default'].createElement(
-			'div',
-			{ className: 'section' },
-			_react2['default'].createElement(
-				'h3',
-				{ className: 'section-heading' },
-				this.props.label
-			),
-			_react2['default'].createElement(AsyncComponent, { multi: this.state.multi, value: this.state.value, onChange: this.onChange, onValueClick: this.gotoUser, valueKey: 'id', labelKey: 'login', loadOptions: this.getUsers, backspaceRemoves: this.state.backspaceRemoves }),
-			_react2['default'].createElement(
-				'div',
-				{ className: 'checkbox-list' },
-				_react2['default'].createElement(
-					'label',
-					{ className: 'checkbox' },
-					_react2['default'].createElement('input', { type: 'radio', className: 'checkbox-control', checked: this.state.multi, onChange: this.switchToMulti }),
-					_react2['default'].createElement(
-						'span',
-						{ className: 'checkbox-label' },
-						'Multiselect'
-					)
-				),
-				_react2['default'].createElement(
-					'label',
-					{ className: 'checkbox' },
-					_react2['default'].createElement('input', { type: 'radio', className: 'checkbox-control', checked: !this.state.multi, onChange: this.switchToSingle }),
-					_react2['default'].createElement(
-						'span',
-						{ className: 'checkbox-label' },
-						'Single Value'
-					)
-				)
-			),
-			_react2['default'].createElement(
-				'div',
-				{ className: 'checkbox-list' },
-				_react2['default'].createElement(
-					'label',
-					{ className: 'checkbox' },
-					_react2['default'].createElement('input', { type: 'checkbox', className: 'checkbox-control', checked: this.state.creatable, onChange: this.toggleCreatable }),
-					_react2['default'].createElement(
-						'span',
-						{ className: 'checkbox-label' },
-						'Creatable?'
-					)
-				),
-				_react2['default'].createElement(
-					'label',
-					{ className: 'checkbox' },
-					_react2['default'].createElement('input', { type: 'checkbox', className: 'checkbox-control', checked: this.state.backspaceRemoves, onChange: this.toggleBackspaceRemoves }),
-					_react2['default'].createElement(
-						'span',
-						{ className: 'checkbox-label' },
-						'Backspace Removes?'
-					)
-				)
-			),
-			_react2['default'].createElement(
-				'div',
-				{ className: 'hint' },
-				'This example uses fetch.js for showing Async options with Promises'
-			)
-		);
-	}
+    return _react2['default'].createElement(
+      'div',
+      { className: 'section' },
+      _react2['default'].createElement(
+        'h3',
+        { className: 'section-heading' },
+        this.props.label
+      ),
+      _react2['default'].createElement(AsyncComponent, { multi: this.state.multi, value: this.state.value, onChange: this.onChange, onValueClick: this.gotoUser, valueKey: 'id', labelKey: 'login', loadOptions: this.getUsers, backspaceRemoves: this.state.backspaceRemoves }),
+      _react2['default'].createElement(
+        'div',
+        { className: 'checkbox-list' },
+        _react2['default'].createElement(
+          'label',
+          { className: 'checkbox' },
+          _react2['default'].createElement('input', { type: 'radio', className: 'checkbox-control', checked: this.state.multi, onChange: this.switchToMulti }),
+          _react2['default'].createElement(
+            'span',
+            { className: 'checkbox-label' },
+            'Multiselect'
+          )
+        ),
+        _react2['default'].createElement(
+          'label',
+          { className: 'checkbox' },
+          _react2['default'].createElement('input', { type: 'radio', className: 'checkbox-control', checked: !this.state.multi, onChange: this.switchToSingle }),
+          _react2['default'].createElement(
+            'span',
+            { className: 'checkbox-label' },
+            'Single Value'
+          )
+        )
+      ),
+      _react2['default'].createElement(
+        'div',
+        { className: 'checkbox-list' },
+        _react2['default'].createElement(
+          'label',
+          { className: 'checkbox' },
+          _react2['default'].createElement('input', { type: 'checkbox', className: 'checkbox-control', checked: this.state.creatable, onChange: this.toggleCreatable }),
+          _react2['default'].createElement(
+            'span',
+            { className: 'checkbox-label' },
+            'Creatable?'
+          )
+        ),
+        _react2['default'].createElement(
+          'label',
+          { className: 'checkbox' },
+          _react2['default'].createElement('input', { type: 'checkbox', className: 'checkbox-control', checked: this.state.backspaceRemoves, onChange: this.toggleBackspaceRemoves }),
+          _react2['default'].createElement(
+            'span',
+            { className: 'checkbox-label' },
+            'Backspace Removes?'
+          )
+        )
+      ),
+      _react2['default'].createElement(
+        'div',
+        { className: 'hint' },
+        'This example uses fetch.js for showing Async options with Promises'
+      )
+    );
+  }
 });
 
 module.exports = GithubUsers;
@@ -1510,7 +1510,7 @@ module.exports = function() {
 require('whatwg-fetch');
 module.exports = self.fetch.bind(self);
 
-},{"whatwg-fetch":83}],24:[function(require,module,exports){
+},{"whatwg-fetch":82}],24:[function(require,module,exports){
 (function(){
   var crypt = require('crypt'),
       utf8 = require('charenc').utf8,
@@ -1766,9 +1766,9 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 },{}],26:[function(require,module,exports){
 (function (process){
-// Generated by CoffeeScript 1.7.1
+// Generated by CoffeeScript 1.12.2
 (function() {
-  var getNanoSeconds, hrtime, loadTime;
+  var getNanoSeconds, hrtime, loadTime, moduleLoadTime, nodeLoadTime, upTime;
 
   if ((typeof performance !== "undefined" && performance !== null) && performance.now) {
     module.exports = function() {
@@ -1776,7 +1776,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
     };
   } else if ((typeof process !== "undefined" && process !== null) && process.hrtime) {
     module.exports = function() {
-      return (getNanoSeconds() - loadTime) / 1e6;
+      return (getNanoSeconds() - nodeLoadTime) / 1e6;
     };
     hrtime = process.hrtime;
     getNanoSeconds = function() {
@@ -1784,7 +1784,9 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
       hr = hrtime();
       return hr[0] * 1e9 + hr[1];
     };
-    loadTime = getNanoSeconds();
+    moduleLoadTime = getNanoSeconds();
+    upTime = process.uptime() * 1e9;
+    nodeLoadTime = moduleLoadTime - upTime;
   } else if (Date.now) {
     module.exports = function() {
       return Date.now() - loadTime;
@@ -1798,6 +1800,8 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
   }
 
 }).call(this);
+
+
 
 }).call(this,require('_process'))
 },{"_process":27}],27:[function(require,module,exports){
@@ -1971,6 +1975,10 @@ process.off = noop;
 process.removeListener = noop;
 process.removeAllListeners = noop;
 process.emit = noop;
+process.prependListener = noop;
+process.prependOnceListener = noop;
+
+process.listeners = function (name) { return [] }
 
 process.binding = function (name) {
     throw new Error('process.binding is not supported');
@@ -2031,9 +2039,9 @@ function parserForArrayFormat(opts) {
 	switch (opts.arrayFormat) {
 		case 'index':
 			return function (key, value, accumulator) {
-				result = /\[(\d*)]$/.exec(key);
+				result = /\[(\d*)\]$/.exec(key);
 
-				key = key.replace(/\[\d*]$/, '');
+				key = key.replace(/\[\d*\]$/, '');
 
 				if (!result) {
 					accumulator[key] = value;
@@ -2049,12 +2057,14 @@ function parserForArrayFormat(opts) {
 
 		case 'bracket':
 			return function (key, value, accumulator) {
-				result = /(\[])$/.exec(key);
+				result = /(\[\])$/.exec(key);
+				key = key.replace(/\[\]$/, '');
 
-				key = key.replace(/\[]$/, '');
-
-				if (!result || accumulator[key] === undefined) {
+				if (!result) {
 					accumulator[key] = value;
+					return;
+				} else if (accumulator[key] === undefined) {
+					accumulator[key] = [value];
 					return;
 				}
 
@@ -2187,7 +2197,7 @@ exports.stringify = function (obj, opts) {
 	}).join('&') : '';
 };
 
-},{"object-assign":25,"strict-uri-encode":82}],29:[function(require,module,exports){
+},{"object-assign":25,"strict-uri-encode":81}],29:[function(require,module,exports){
 (function (global){
 var now = require('performance-now')
   , root = typeof window === 'undefined' ? global : window
@@ -2264,8 +2274,36 @@ module.exports.polyfill = function() {
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"performance-now":26}],30:[function(require,module,exports){
-module.exports = require('react/lib/shallowCompare');
-},{"react/lib/shallowCompare":81}],31:[function(require,module,exports){
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule shallowCompare
+ */
+
+'use strict';
+
+var shallowEqual = require('fbjs/lib/shallowEqual');
+
+/**
+ * Does a shallow comparison for props and state.
+ * See ReactComponentWithPureRenderMixin
+ * See also https://facebook.github.io/react/docs/shallow-compare.html
+ */
+function shallowCompare(instance, nextProps, nextState) {
+  return (
+    !shallowEqual(instance.props, nextProps) ||
+    !shallowEqual(instance.state, nextState)
+  );
+}
+
+module.exports = shallowCompare;
+
+},{"fbjs/lib/shallowEqual":20}],31:[function(require,module,exports){
 'use strict';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -2288,6 +2326,10 @@ var _isRetina = require('is-retina');
 
 var _isRetina2 = _interopRequireDefault(_isRetina);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
@@ -2304,7 +2346,7 @@ var Gravatar = function (_React$Component) {
   function Gravatar() {
     _classCallCheck(this, Gravatar);
 
-    return _possibleConstructorReturn(this, Object.getPrototypeOf(Gravatar).apply(this, arguments));
+    return _possibleConstructorReturn(this, (Gravatar.__proto__ || Object.getPrototypeOf(Gravatar)).apply(this, arguments));
   }
 
   _createClass(Gravatar, [{
@@ -2331,7 +2373,7 @@ var Gravatar = function (_React$Component) {
       if (this.props.md5) {
         hash = this.props.md5;
       } else if (typeof this.props.email === 'string') {
-        hash = (0, _md2.default)(formattedEmail);
+        hash = (0, _md2.default)(formattedEmail, { encoding: "binary" });
       } else {
         console.warn('Gravatar image can not be fetched. Either the "email" or "md5" prop must be specified.');
         return _react2.default.createElement('script', null);
@@ -2394,14 +2436,14 @@ var Gravatar = function (_React$Component) {
 
 Gravatar.displayName = 'Gravatar';
 Gravatar.propTypes = {
-  email: _react2.default.PropTypes.string,
-  md5: _react2.default.PropTypes.string,
-  size: _react2.default.PropTypes.number,
-  rating: _react2.default.PropTypes.string,
-  default: _react2.default.PropTypes.string,
-  className: _react2.default.PropTypes.string,
-  protocol: _react2.default.PropTypes.string,
-  style: _react2.default.PropTypes.object
+  email: _propTypes2.default.string,
+  md5: _propTypes2.default.string,
+  size: _propTypes2.default.number,
+  rating: _propTypes2.default.string,
+  default: _propTypes2.default.string,
+  className: _propTypes2.default.string,
+  protocol: _propTypes2.default.string,
+  style: _propTypes2.default.object
 };
 Gravatar.defaultProps = {
   size: 50,
@@ -2412,7 +2454,7 @@ Gravatar.defaultProps = {
 
 
 module.exports = Gravatar;
-},{"is-retina":22,"md5":24,"query-string":28,"react":undefined}],32:[function(require,module,exports){
+},{"is-retina":22,"md5":24,"prop-types":undefined,"query-string":28,"react":undefined}],32:[function(require,module,exports){
 module.exports =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -9477,31 +9519,6 @@ module.exports = {
   removeResizeListener: removeResizeListener
 };
 },{}],81:[function(require,module,exports){
-/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- *
- */
-
-'use strict';
-
-var shallowEqual = require('fbjs/lib/shallowEqual');
-
-/**
- * Does a shallow comparison for props and state.
- * See ReactComponentWithPureRenderMixin
- * See also https://facebook.github.io/react/docs/shallow-compare.html
- */
-function shallowCompare(instance, nextProps, nextState) {
-  return !shallowEqual(instance.props, nextProps) || !shallowEqual(instance.state, nextState);
-}
-
-module.exports = shallowCompare;
-},{"fbjs/lib/shallowEqual":20}],82:[function(require,module,exports){
 'use strict';
 module.exports = function (str) {
 	return encodeURIComponent(str).replace(/[!'()*]/g, function (c) {
@@ -9509,7 +9526,7 @@ module.exports = function (str) {
 	});
 };
 
-},{}],83:[function(require,module,exports){
+},{}],82:[function(require,module,exports){
 (function(self) {
   'use strict';
 
@@ -9596,7 +9613,10 @@ module.exports = function (str) {
       headers.forEach(function(value, name) {
         this.append(name, value)
       }, this)
-
+    } else if (Array.isArray(headers)) {
+      headers.forEach(function(header) {
+        this.append(header[0], header[1])
+      }, this)
     } else if (headers) {
       Object.getOwnPropertyNames(headers).forEach(function(name) {
         this.append(name, headers[name])

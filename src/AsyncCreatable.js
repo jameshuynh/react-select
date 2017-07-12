@@ -14,34 +14,34 @@ function reduce(obj, props = {}){
 
 class AsyncCreatableSelect extends React.Component {
 
-	focus () {
-		this.select.focus();
-	}
+  focus () {
+    this.select.focus();
+  }
 
-	render () {
-		return (
-			<Async {...this.props}>
-				{(asyncProps) => (
-					<Creatable {...this.props}>
-						{(creatableProps) => (
-							<Select
-								{...reduce(asyncProps, reduce(creatableProps, {}))}
-								onInputChange={(input) => {
-									creatableProps.onInputChange(input);
-									return asyncProps.onInputChange(input);
-								}}
-								ref={(ref) => {
-									this.select = ref;
-									creatableProps.ref(ref);
-									asyncProps.ref(ref);
-								}}
-							/>
-						)}
-					</Creatable>
-				)}
-			</Async>
-		);
-	}
+  render () {
+    return (
+      <Async {...this.props}>
+        {(asyncProps) => (
+          <Creatable {...this.props}>
+            {(creatableProps) => (
+              <Select
+                {...reduce(asyncProps, reduce(creatableProps, {}))}
+                onInputChange={(input) => {
+                  creatableProps.onInputChange(input);
+                  return asyncProps.onInputChange(input);
+                }}
+                ref={(ref) => {
+                  this.select = ref;
+                  creatableProps.ref(ref);
+                  asyncProps.ref(ref);
+                }}
+              />
+            )}
+          </Creatable>
+        )}
+      </Async>
+    );
+  }
 };
 
 module.exports = AsyncCreatableSelect;
